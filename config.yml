@@ -1,0 +1,285 @@
+#   _____                _ _                  
+#  / ____|              | | |                 
+# | (___  _ __ ___   ___| | |_ ___ _ __ _   _ 
+#  \___ \| '_ ` _ \ / _ \ | __/ _ \ '__| | | |
+#  ____) | | | | | |  __/ | ||  __/ |  | |_| |
+# |_____/|_| |_| |_|\___|_|\__\___|_|   \__, |
+#                                        __/ |
+#  ____                     _           |___/              	
+# |  _ \       _      /\   (_)                      	
+# | |_) |_   _(_)    /  \   _  __ ___  ____ _ _ __  	
+# |  _ <| | | |     / /\ \ | |/ _` \ \/ / _` | '_ \ 	
+# | |_) | |_| |_   / ____ \| | (_| |>  < (_| | | | |	
+# |____/ \__, (_) /_/    \_\ |\__,_/_/\_\__,_|_| |_|	
+#         __/ |           _/ |                      	
+#        |___/           |__/                      		
+#
+###----------------------- Config ------------------------###
+###   Here are the configurable options for this plugin.  ###
+###        For help, contact me on my on Discord          ###
+###              My username is Ajaxan#5642               ###
+###               Suggestions are welcome!                ###
+###-------------------------------------------------------### 
+
+ConfigVersion: 1.3 
+
+### DESCRIPTION ###
+# This plugin has two main parts.
+#    1) Adding ingredients to a forge to create new types of metal
+#    2) Using those newly made metals to craft powerful armor and weapons
+#
+# This config file gives complete control over how new metals are made,
+# how long it takes to make them, what they are called, and the new 
+# properties they give. Notice, that for each piece of armor their are 
+# quite a few options, for the safety of the plugin and your server, 
+# any unused options will cause the plugin to fail and not load.
+#
+### Hints ###
+# This section, if set to true, will enabled recipe hints by renaming
+# ruined forge products to hint at what recipe the user was close to
+# creating. Note, for a hint to be given the player has to at least
+# get the materials correct. The time and amount of each material can
+# vary however.
+#
+EnableHints: true
+HintWords:
+   CorrectTimeAndMaterials: "Imperfect"
+   CorrectMaterialsAndAmounts: "Brittle"
+   CorrectMaterial: "Ruined"
+#
+### Phrases ###
+# This section allows you to change the phrases that a player will
+# receive upon performing certain actions. Unlike some plugin I
+# don't provide language files, instead I let you configure it
+# to your liking!
+#
+phrases:
+   FillCauldron: "Fill up the Cauldron first to use it to cool metal."
+   FailedRecipe: "The mixture turns to dust in the cauldron."
+   SuccessfulRecipe: "The metal hardens and cools."
+   ClickSmeltingForge: "This forge is currently smelting."
+   ForgeMaterialsFlushed: "The Forge ingredients have been flushed out."
+   RetrieveMoltenMetal: "You scoop the molten metal out of the forge."
+   ForgeSmeltingTime: "This forge has been smelting for " 
+   ForgeJustBegunSmelting: "This forge has just begun smelting."
+   BreakForge: "You dismantle the forge."
+#
+#
+#
+### Special Materials ###
+# This plugin includes some special new items that are made as a result of forging
+# These items allow for more forging possibilities
+# These items are: TIN, COPPER, TINCOPPER, SCRAP_METAL, SCRAP_GOLD, CRYSTAL
+#
+### RECIPE MATERIALS ###
+# 
+# This section declares what possible items can be used for
+# recipes and what they produce if they are the main ingredient.
+#
+# Their are some items included by default:
+# IRON_INGOT: SCRAP_METAL
+# COAL: NONE
+# GRAVEL: TINCOPPER
+# GOLD_INGOT: SCRAP_GOLD
+# DIAMOND: CRYSTAL
+# EMERALD: CRYSTAL
+#
+# To use special materials type the names exactly as they appear above.
+# There also two special cases: NONE and EXPLODE
+# NONE means there is no result and EXPLODE makes 
+# the furnace explode when trying to remove result.
+#
+materials:
+   IRON_INGOT: SCRAP_METAL
+   COAL: NONE
+   GRAVEL: TINCOPPER
+   GOLD_INGOT: SCRAP_GOLD
+   DIAMOND: CRYSTAL
+   EMERALD: CRYSTAL
+   OBSIDIAN: OBSIDIAN
+   STONE: COBBLESTONE
+   SULPHUR: EXPLODE
+   GLOWSTONE_DUST: NONE
+   REDSTONE: NONE
+   BLAZE_POWDER: EXPLODE
+   QUARTZ: COBBLESTONE
+   NETHER_BRICK: NETHER_BRICK
+   DRAGONS_BREATH: NONE
+   
+#
+#
+#
+#
+### EXAMPLE RECIPE ####
+#
+#recipes:   
+#   0:
+#      name: Dragonsteel			# Name that will appear on ingots and armor
+#      tag: DSteel					# Every item tag must be unique. Names do not have to be.
+#      baseitem: IRON_INGOT			# The base item the recipe will use. Dragonsteel will look like iron. *
+#      durabilitymultiplier: 2.0	# This Attribute when set to 2.0, doubles the items durability **
+#      magicresistance: 0			# This Attribute is only compatable with the MagicWords plugin. [Currently Unavailable]
+#      smelttime: 5					# The amount of time the ingot must smelt before being done.
+#      ingredients:					# What must be added to the forge to make this item. (Material/Amount)
+#      - IRON_INGOT/3               # This means the player must add 3 IRON_INGOTS to the forge
+#      - COAL/2                     # Along with the 3 IRON_INGOTS, the player must also add 2 COAL.
+#      - DRAGONS_BREATH/1           # Finally, 1 DRAGONS_BREATH must be added. All materials can be found here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
+#      attributes:                  # The various attributes the ingot can have. Positive values add, negative values subtract.
+#         maxhealth: 0              # This Attribute accepts only Integer values from -10 to +10. Each point represents half a heart.
+#         attackdamage: 0           # This Attribute accepts any numbers from -10.0 to +10.0. Each point represents one base damage.
+#         movementspeed: 0          # This Attribute accepts any values from -0.1 to +10.0. ***
+#         knockbackresistance: 0    # This attribute accepts any values from 0.0 to 1.0. ****
+#         armor: 0                  # This attribute accepts only Integer values from -100 to +100. Each point represents 1 base armor.
+#         armortoughness: 0         # This Attribute accepts only Intger values from -100 to +100. Each point increases toughness by 1.
+#         attackspeed: 0            # This attribute accepts any value from -4.0 to + 10.0. *****
+#      items:                       # The item slots this ore can be used to make ***
+#         helmet: true              # This slot enables the ingots to be made into helmets.
+#         chestplate: true          # This slot enables the ingots to be made into chestplates.
+#         leggings: true            # This slot enables the ingots to be made into leggings.
+#         boots: true               # This slot enables the ingots to be made into boots.
+#         mainhand: false           # This slot enables the ingots to be made into weapons and tools.
+#         offhand: true             # This slot enables the ingots to be made into shields. Only applies to IRON_INGOT base items.
+#
+#									  * - The only base items so far are: IRON_INGOT, GOLD_INGOT, DIAMOND
+#								     ** - Another example, if you set the durability to 1.1, this will increase durability by 10%
+#                                         Finally, setting the durability to 0.5 would half the durability.
+#								    *** - Base speed is 0.1 for all players. A value of 0.01 for this Attribute increases speed by 10%.
+#                                  **** - Base player knockback resistance is 0. a value of 0.5 increase chance to resist knockback by 50%.
+#                                 ***** - Base player attack speed is 4.0. All weapons and tools actually decrease attack speed. For example
+#                                         A basic iron sword would have a value of -2.4 resulting in an attack speed of 1.6. (4.0 - 2.4 = 1.6)
+
+recipes:
+   0:
+      name: Soulsteel
+      tag: Soulsteel
+      baseitem: GOLD_INGOT
+      durabilitymultiplier: 2.0
+      magicresistance: 0
+      smelttime: 3	
+      ingredients:
+      - IRON_INGOT/3
+      - CRYSTAL/1
+      effects:
+         maxhealth: 2
+         attackdamage: 0
+         movementspeed: 0
+         knockbackresistance: 0
+         armor: 0
+         armortoughness: 1
+         attackspeed: 0
+         luck: 0
+      slots:
+         head: true
+         chest: true
+         legs: true
+         feet: true
+         mainhand: false
+         offhand: false
+   1:
+      name: Luckium
+      tag: Luckium
+      baseitem: GOLD_INGOT
+      durabilitymultiplier: 1
+      magicresistance: 0
+      smelttime: 1
+      ingredients:
+      - SCRAP_GOLD/4
+      - CRYSTAL/1
+      - GOLD_INGOT/2
+      effects:
+         maxhealth: 0
+         attackdamage: 0
+         movementspeed: 0
+         knockbackresistance: 0
+         armor: 0
+         armortoughness: 0
+         attackspeed: 0
+         luck: 4
+      slots:
+         head: true
+         chest: false
+         legs: false
+         feet: false
+         mainhand: false
+         offhand: false
+   2:
+      name: Crystalline
+      tag: Crystalline
+      baseitem: DIAMOND
+      durabilitymultiplier: 1.7
+      magicresistance: 0
+      smelttime: 1
+      ingredients:
+      - CRYSTAL/1
+      - EMERALD/2
+      - DIAMOND/2
+      effects:
+         maxhealth: 0
+         attackdamage: 1
+         movementspeed: 0.025
+         knockbackresistance: 0.1
+         armor: 1
+         armortoughness: 1
+         attackspeed: 0
+         luck: 1
+      slots:
+         head: true
+         chest: true
+         legs: true
+         feet: true
+         mainhand: false
+         offhand: false
+   3:
+      name: Hooksteel
+      tag: Hooksteel
+      baseitem: IRON_INGOT
+      durabilitymultiplier: 1.3
+      magicresistance: 0
+      smelttime: 1
+      ingredients:
+      - SCRAP_METAL/2
+      - IRON_INGOT/1
+      - CRYSTAL/1
+      effects:
+         maxhealth: 0
+         attackdamage: 2
+         movementspeed: 0
+         knockbackresistance: 0
+         armor: 0
+         armortoughness: 0
+         attackspeed: 0.2
+         luck: 0
+      slots:
+         head: false
+         chest: false
+         legs: false
+         feet: false
+         mainhand: true
+         offhand: true
+   4:
+      name: Moltenne
+      tag: Molten
+      baseitem: IRON_INGOT
+      durabilitymultiplier: 1.3
+      magicresistance: 0
+      smelttime: 1
+      ingredients:
+      - DRAGONS_BREATH/8
+      - IRON_INGOT/1
+      - CRYSTAL/1
+      effects:
+         maxhealth: 2
+         attackdamage: 1
+         movementspeed: 0.05
+         knockbackresistance: 0.1
+         armor: 4
+         armortoughness: 4
+         attackspeed: 0
+         luck: 0
+      slots:
+         head: false
+         chest: false
+         legs: false
+         feet: false
+         mainhand: false
+         offhand: true
